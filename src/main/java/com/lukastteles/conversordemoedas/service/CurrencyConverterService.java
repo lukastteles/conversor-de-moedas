@@ -10,6 +10,9 @@ import com.lukastteles.conversordemoedas.model.factory.TransactionTOFactory;
 import com.lukastteles.conversordemoedas.repository.TrasactionRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class CurrencyConverterService {
 
@@ -36,6 +39,20 @@ public class CurrencyConverterService {
         TransactionTO transactionTO = TransactionTOFactory.create(transaction);
 
         return transactionTO;
+    }
+
+    public List<TransactionTO> getAllTransactionsByIdUser(Long idUser) throws ResourceNotFoundException {
+        verifyIfUserExists(idUser);
+        List<Transaction> transactionList = trasactionRepository.findAllByUserId(idUser);
+        List<TransactionTO> transactionTOList = transactionList.stream().map(transaction ->
+                TransactionTOFactory.create(transaction)).collect(Collectors.toList());
+        return transactionTOList;
+    }
+
+    private void verifyIfUserExists(Long idUser) throws ResourceNotFoundException {
+        if(!trasactionRepository.existsTransactionByUserId(idUser)){
+            throw new ResourceNotFoundException("User ID not found for ID: "+idUser);
+        }
     }
 
 }
