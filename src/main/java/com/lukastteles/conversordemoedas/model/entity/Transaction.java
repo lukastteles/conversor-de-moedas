@@ -1,10 +1,17 @@
 package com.lukastteles.conversordemoedas.model.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public class Trasaction {
+@Entity
+public class Transaction {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Long userId;
     private CurrencyEnum baseCurrency;
@@ -13,7 +20,7 @@ public class Trasaction {
     private BigDecimal conversionTax;
     private LocalDateTime date;
 
-    public Trasaction() {
+    public Transaction() {
     }
 
     public Long getId() {
@@ -28,7 +35,7 @@ public class Trasaction {
         return userId;
     }
 
-    public void setUserInd(Long userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 

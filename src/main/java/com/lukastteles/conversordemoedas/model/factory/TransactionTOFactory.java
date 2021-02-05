@@ -1,24 +1,21 @@
 package com.lukastteles.conversordemoedas.model.factory;
 
-import com.lukastteles.conversordemoedas.model.TO.ExchangeRatesTO;
-import com.lukastteles.conversordemoedas.model.TO.Rates;
 import com.lukastteles.conversordemoedas.model.TO.TransactionTO;
-import com.lukastteles.conversordemoedas.model.TO.TransactionRequestTO;
+import com.lukastteles.conversordemoedas.model.entity.Transaction;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 public class TransactionTOFactory {
-
-    public static TransactionTO create(TransactionRequestTO transactionRequestTO, ExchangeRatesTO exchangeRatesTO) {
-        TransactionTO transactionTO = new TransactionTO();
-        transactionTO.setUserId(transactionRequestTO.getUserId());
-        transactionTO.setBaseCurrency(transactionRequestTO.getBaseCurrency());
-        transactionTO.setBaseValue(transactionRequestTO.getBaseValue());
-        transactionTO.setDestinationCurrency(transactionRequestTO.getDestinationCurrency());
-        transactionTO.setConversionTax(getConversionTax(exchangeRatesTO.getRates(), transactionRequestTO.getDestinationCurrency()));
-        transactionTO.setDestinationValue(getDestinationValue(transactionRequestTO.getBaseValue(), transactionTO.getConversionTax()));
-        transactionTO.setDate(LocalDateTime.now().toString());
+        public static TransactionTO create(Transaction transaction){
+            TransactionTO transactionTO = new TransactionTO();
+            transactionTO.setId(transaction.getId());
+            transactionTO.setUserId(transaction.getUserId());
+            transactionTO.setBaseCurrency(transaction.getBaseCurrency().getText());
+            transactionTO.setBaseValue(transaction.getBaseValue());
+            transactionTO.setDestinationCurrency(transaction.getDestinationCurrency().getText());
+            transactionTO.setDestinationValue(getDestinationValue(transaction.getBaseValue(), transaction.getConversionTax()));
+            transactionTO.setConversionTax(transaction.getConversionTax());
+            transactionTO.setDate(transaction.getDate().toString());
 
         return transactionTO;
     }
@@ -27,18 +24,4 @@ public class TransactionTOFactory {
         return baseValue.multiply(conversionTax);
     }
 
-    private static BigDecimal getConversionTax(Rates rates, String baseCurrency) {
-        switch (baseCurrency){
-            case "BRL":
-                return rates.getBrl();
-            case "USD":
-                return rates.getUsd();
-            case "EUR":
-                return rates.getEur();
-            case "JPY":
-                return rates.getJpy();
-            default:
-                return BigDecimal.ZERO;
-        }
-    }
 }
