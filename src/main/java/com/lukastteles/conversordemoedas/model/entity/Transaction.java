@@ -78,4 +78,17 @@ public class Transaction {
     public void setDate(LocalDateTime date) {
         this.date = date;
     }
+
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", baseCurrency=" + baseCurrency +
+                ", baseValue=" + baseValue +
+                ", destinationCurrency=" + destinationCurrency +
+                ", conversionTax=" + conversionTax +
+                ", date=" + date +
+                '}';
+    }
 }

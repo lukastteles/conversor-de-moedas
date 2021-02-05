@@ -43,4 +43,14 @@ public class TransactionRequestTO {
     public void setDestinationCurrency(String destinationCurrency) {
         this.destinationCurrency = destinationCurrency;
     }
+
+    @Override
+    public String toString() {
+        return "TransactionRequestTO{" +
+                "userId=" + userId +
+                ", baseCurrency='" + baseCurrency + '\'' +
+                ", baseValue=" + baseValue +
+                ", destinationCurrency='" + destinationCurrency + '\'' +
+                '}';
+    }
 }

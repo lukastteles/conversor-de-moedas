@@ -40,4 +40,13 @@ public class ExchangeRatesTO implements Serializable {
     public void setDate(String date) {
         this.date = date;
     }
+
+    @Override
+    public String toString() {
+        return "ExchangeRatesTO{" +
+                "rates=" + rates +
+                ", base='" + base + '\'' +
+                ", date='" + date + '\'' +
+                '}';
+    }
 }
