@@ -21,7 +21,7 @@ public class TransactionTOFactory {
     }
 
     private static BigDecimal getDestinationValue(BigDecimal baseValue, BigDecimal conversionTax) {
-        return baseValue.multiply(conversionTax);
+        return baseValue.multiply(conversionTax).setScale(2, BigDecimal.ROUND_HALF_UP);
     }
 
 }

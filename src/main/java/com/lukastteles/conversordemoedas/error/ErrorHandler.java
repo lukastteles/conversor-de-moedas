@@ -10,8 +10,8 @@ public class ErrorHandler {
 
     @ExceptionHandler(ResourceNotFoundException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ResourceNotFoundException handleCustomException(ResourceNotFoundException resourceNotFoundException) {
-        return resourceNotFoundException;
+    public ResourceNotFoundException handleResourceNotFoundException(ResourceNotFoundException resourceNotFoundException) {
+        return  resourceNotFoundException;
     }
 
 }

@@ -8,8 +8,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -26,7 +28,8 @@ public class CurrencyConverterController {
     }
 
     @PostMapping
-    public ResponseEntity<TransactionTO> convert(@RequestBody TransactionRequestTO transactionRequestTO) {
+    @Transactional
+    public ResponseEntity<TransactionTO> convert(@Valid @RequestBody TransactionRequestTO transactionRequestTO) {
         logger.info(String.format(
                 "starting convert request with TransactionRequest params: %s", transactionRequestTO.toString()));
         TransactionTO transactionTO = currencyConverterService.convert(transactionRequestTO);

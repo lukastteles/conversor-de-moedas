@@ -1,9 +1,6 @@
 package com.lukastteles.conversordemoedas.model.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -13,11 +10,23 @@ public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(nullable = false)
     private Long userId;
+
+    @Column(nullable = false)
     private CurrencyEnum baseCurrency;
+
+    @Column(nullable = false)
     private BigDecimal baseValue;
+
+    @Column(nullable = false)
     private CurrencyEnum destinationCurrency;
+
+    @Column(nullable = false)
     private BigDecimal conversionTax;
+
+    @Column(nullable = false)
     private LocalDateTime date;
 
     public Transaction() {
