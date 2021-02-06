@@ -1,0 +1,1 @@
+web: java -Dserver.port=$PORT -jar target/conversor-de-moedas-0.0.1.jar -Dspring.profiles.active=prod
