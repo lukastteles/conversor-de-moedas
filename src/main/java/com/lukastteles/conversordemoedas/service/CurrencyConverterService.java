@@ -7,7 +7,7 @@ import com.lukastteles.conversordemoedas.model.TO.TransactionTO;
 import com.lukastteles.conversordemoedas.model.entity.Transaction;
 import com.lukastteles.conversordemoedas.model.factory.TransactionFactory;
 import com.lukastteles.conversordemoedas.model.factory.TransactionTOFactory;
-import com.lukastteles.conversordemoedas.repository.TrasactionRepository;
+import com.lukastteles.conversordemoedas.repository.TransactionRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -21,12 +21,12 @@ public class CurrencyConverterService {
     Logger logger = LoggerFactory.getLogger(CurrencyConverterService.class);
 
     private final ExchangeRatesService exchangeRatesService;
-    private final TrasactionRepository trasactionRepository;
+    private final TransactionRepository transactionRepository;
 
     public CurrencyConverterService(ExchangeRatesService exchangeRatesService,
-                                    TrasactionRepository trasactionRepository) {
+                                    TransactionRepository transactionRepository) {
         this.exchangeRatesService = exchangeRatesService;
-        this.trasactionRepository = trasactionRepository;
+        this.transactionRepository = transactionRepository;
     }
 
     public TransactionTO convert(TransactionRequestTO transactionRequestTO) throws ResourceNotFoundException {
@@ -35,9 +35,9 @@ public class CurrencyConverterService {
                 transactionRequestTO.getBaseCurrency(),
                 transactionRequestTO.getDestinationCurrency());
 
-        //save trasaction data
+        //save transaction data
         Transaction transaction =  TransactionFactory.create(transactionRequestTO, exchangeRatesTO);
-        trasactionRepository.save(transaction);
+        transactionRepository.save(transaction);
         logger.info(String.format("transaction saved: %s", transaction));
 
         //change exchangeRatesTO object to TransactionTO
@@ -48,7 +48,7 @@ public class CurrencyConverterService {
 
     public List<TransactionTO> getAllTransactionsByIdUser(Long idUser) throws ResourceNotFoundException {
         verifyIfUserExists(idUser);
-        List<Transaction> transactionList = trasactionRepository.findAllByUserId(idUser);
+        List<Transaction> transactionList = transactionRepository.findAllByUserId(idUser);
         logger.info(String.format("transaction list for id: %s - %s", idUser, transactionList));
         List<TransactionTO> transactionTOList = transactionList.stream().map(transaction ->
                 TransactionTOFactory.create(transaction)).collect(Collectors.toList());
@@ -56,7 +56,7 @@ public class CurrencyConverterService {
     }
 
     private void verifyIfUserExists(Long idUser) throws ResourceNotFoundException {
-        if(!trasactionRepository.existsTransactionByUserId(idUser)){
+        if(!transactionRepository.existsTransactionByUserId(idUser)){
             logger.warn(String.format("user with id: %s not exists", idUser));
             throw new ResourceNotFoundException("User ID not found for ID: "+idUser);
         }

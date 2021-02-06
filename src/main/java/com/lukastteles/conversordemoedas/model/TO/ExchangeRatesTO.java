@@ -8,12 +8,6 @@ public class ExchangeRatesTO implements Serializable {
     private String base;
     private String date;
 
-    public ExchangeRatesTO(Rates rates, String base, String date) {
-        this.rates = rates;
-        this.base = base;
-        this.date = date;
-    }
-
     public ExchangeRatesTO() {
     }
 
