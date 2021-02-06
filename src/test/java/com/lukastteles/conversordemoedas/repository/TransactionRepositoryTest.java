@@ -26,10 +26,12 @@ public class TransactionRepositoryTest {
         transaction.setConversionTax(BigDecimal.valueOf(0.1836531388));
         transaction.setDate(LocalDateTime.now());
 
-        transactionRepository.save(transaction);
+        transaction = transactionRepository.save(transaction);
 
         Assertions.assertThat(transactionRepository.existsTransactionByUserId(1L)).isTrue();
-        Assertions.assertThat(transactionRepository.existsTransactionByUserId(2L)).isFalse();
+        Assertions.assertThat(transactionRepository.existsTransactionByUserId(9L)).isFalse();
+
+        transactionRepository.delete(transaction);
 
 
     }
@@ -45,8 +47,10 @@ public class TransactionRepositoryTest {
         transaction2.setConversionTax(BigDecimal.valueOf(0.1836531388));
         transaction2.setDate(LocalDateTime.now());
 
-        transactionRepository.save(transaction2);
+        transaction2 = transactionRepository.save(transaction2);
 
-        Assertions.assertThat(transactionRepository.findAllByUserId(1L).size()).isEqualTo(2);
+        Assertions.assertThat(transactionRepository.findAllByUserId(1L).size()).isEqualTo(1);
+
+        transactionRepository.delete(transaction2);
     }
 }
