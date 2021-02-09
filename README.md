@@ -3,8 +3,8 @@
 [![Build Status](https://travis-ci.com/lukastteles/conversor-de-moedas.svg?branch=main)](https://travis-ci.com/lukastteles/conversor-de-moedas)
 
 <p align="center">
-  <a href="#-como-rodar-a-aplicacao">Como rodar a aplicação</a>&nbsp;&nbsp;|&nbsp;&nbsp
-  <a href="#-proposito">Projeto</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+  <a href="#-projeto">Projeto</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+  <a href="#-como-executar-a-aplicacao">Como executar a aplicação</a>&nbsp;&nbsp;|&nbsp;&nbsp
   <a href="#-recursos">Recursos</a>&nbsp;&nbsp;|&nbsp;&nbsp;
   <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;|&nbsp;&nbsp;
   <a href="#-camadas">Camadas</a>
