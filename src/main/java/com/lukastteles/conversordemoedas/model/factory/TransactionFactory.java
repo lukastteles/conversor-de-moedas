@@ -9,8 +9,20 @@ import com.lukastteles.conversordemoedas.model.entity.Transaction;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+/**
+ * Factory to create a {@link com.lukastteles.conversordemoedas.model.entity.Transaction} object
+ * @author Lukas Teles
+ */
 public class TransactionFactory {
 
+    /**
+     * Creates a {@link com.lukastteles.conversordemoedas.model.entity.Transaction} object
+     * by {@link com.lukastteles.conversordemoedas.model.TO.TransactionRequestTO}
+     * and {@link com.lukastteles.conversordemoedas.model.TO.ExchangeRatesTO}
+     * @param transactionRequestTO {@link com.lukastteles.conversordemoedas.model.TO.TransactionRequestTO} request object
+     * @param exchangeRatesTO {@link com.lukastteles.conversordemoedas.model.TO.ExchangeRatesTO} exchange rates API result object
+     * @return {@link com.lukastteles.conversordemoedas.model.entity.Transaction}
+     */
     public static Transaction create(TransactionRequestTO transactionRequestTO, ExchangeRatesTO exchangeRatesTO) {
         Transaction transaction = new Transaction();
         transaction.setUserId(transactionRequestTO.getUserId());
@@ -23,6 +35,12 @@ public class TransactionFactory {
         return transaction;
     }
 
+    /**
+     * Get conversion tax value by currency
+     * @param rates {@link com.lukastteles.conversordemoedas.model.TO.Rates} rates API result object
+     * @param baseCurrency {@link java.lang.String} base currency text
+     * @return {@link java.math.BigDecimal}
+     */
     private static BigDecimal getConversionTax(Rates rates, String baseCurrency) {
         switch (baseCurrency){
             case "BRL":

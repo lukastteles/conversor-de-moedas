@@ -14,6 +14,10 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+/**
+ * Currency converter endpoint controller
+ * @author Lukas Teles
+ */
 @RestController
 @RequestMapping("currency-converter")
 public class CurrencyConverterController {
@@ -22,11 +26,20 @@ public class CurrencyConverterController {
 
     private final CurrencyConverterService currencyConverterService;
 
+    /**
+     * Default constructor
+     * @param currencyConverterService {@link com.lukastteles.conversordemoedas.service.CurrencyConverterService} service object
+     */
     @Autowired
     public CurrencyConverterController(CurrencyConverterService currencyConverterService) {
         this.currencyConverterService = currencyConverterService;
     }
 
+    /**
+     * Endpoint for currency convert
+     * @param transactionRequestTO {@link com.lukastteles.conversordemoedas.model.TO.TransactionRequestTO} transaction request object
+     * @return {@link org.springframework.http.ResponseEntity}
+     */
     @PostMapping
     @Transactional
     public ResponseEntity<TransactionTO> convert(@Valid @RequestBody TransactionRequestTO transactionRequestTO) {
@@ -38,6 +51,11 @@ public class CurrencyConverterController {
         return new ResponseEntity<>(transactionTO, HttpStatus.OK);
     }
 
+    /**
+     * Endpoint to get all transactions by ID user
+     * @param idUser {@link java.lang.Long} ID user
+     * @return {@link org.springframework.http.ResponseEntity}
+     */
     @GetMapping(path = "/{idUser}")
     public ResponseEntity<?> getAllTransactionsByIdUser( @PathVariable("idUser") Long idUser) {
         logger.info(String.format("starting request for all transactions with idUser: %s", idUser));

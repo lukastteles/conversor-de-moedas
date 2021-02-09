@@ -15,6 +15,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Service class for management of transaction request object and to access repository
+ * @author Lukas Teles
+ */
 @Service
 public class CurrencyConverterService {
 
@@ -23,12 +27,26 @@ public class CurrencyConverterService {
     private final ExchangeRatesService exchangeRatesService;
     private final TransactionRepository transactionRepository;
 
+    /**
+     * Default constructor
+     * @param exchangeRatesService exchange rates service object
+     * @param transactionRepository transaction repository object
+     */
     public CurrencyConverterService(ExchangeRatesService exchangeRatesService,
                                     TransactionRepository transactionRepository) {
         this.exchangeRatesService = exchangeRatesService;
         this.transactionRepository = transactionRepository;
     }
 
+    /**
+     * Get {@link com.lukastteles.conversordemoedas.model.TO.TransactionRequestTO} object,
+     * call Exchange Rates API,
+     * save {@link com.lukastteles.conversordemoedas.model.entity.Transaction} data,
+     * and build the result data
+     * @param transactionRequestTO {@link com.lukastteles.conversordemoedas.model.TO.TransactionRequestTO} data from request
+     * @return {@link com.lukastteles.conversordemoedas.model.TO.TransactionTO}
+     * @throws ResourceNotFoundException {@link com.lukastteles.conversordemoedas.error.ResourceNotFoundException}
+     */
     public TransactionTO convert(TransactionRequestTO transactionRequestTO) throws ResourceNotFoundException {
         //call rest template service for 'exchangerates.io'
         ExchangeRatesTO exchangeRatesTO = exchangeRatesService.getExchangeRatesTO(
@@ -46,6 +64,12 @@ public class CurrencyConverterService {
         return transactionTO;
     }
 
+    /**
+     * Get all transactions by IdUser
+     * @param idUser id number for user
+     * @return {@link java.util.List}
+     * @throws ResourceNotFoundException {@link com.lukastteles.conversordemoedas.error.ResourceNotFoundException}
+     */
     public List<TransactionTO> getAllTransactionsByIdUser(Long idUser) throws ResourceNotFoundException {
         verifyIfUserExists(idUser);
         List<Transaction> transactionList = transactionRepository.findAllByUserId(idUser);
@@ -55,6 +79,11 @@ public class CurrencyConverterService {
         return transactionTOList;
     }
 
+    /**
+     * Verify if user exists by id number
+     * @param idUser id number for user
+     * @throws ResourceNotFoundException {@link com.lukastteles.conversordemoedas.error.ResourceNotFoundException}
+     */
     private void verifyIfUserExists(Long idUser) throws ResourceNotFoundException {
         if(!transactionRepository.existsTransactionByUserId(idUser)){
             logger.warn(String.format("user with id: %s not exists", idUser));
