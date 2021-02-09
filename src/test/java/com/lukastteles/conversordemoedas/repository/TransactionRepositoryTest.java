@@ -17,11 +17,15 @@ public class TransactionRepositoryTest {
     @Autowired
     private TransactionRepository transactionRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @Test
     public void existsTransactionByUserIdTest(){
+        User user = userRepository.save(new User("test"));
+
         Transaction transaction = new Transaction();
-        transaction.setUser(new User());
-        transaction.getUser().setId(1L);
+        transaction.setUser(user);
         transaction.setBaseValue(BigDecimal.valueOf(1));
         transaction.setBaseCurrency(CurrencyEnum.BRL);
         transaction.setDestinationCurrency(CurrencyEnum.USD);
@@ -30,20 +34,20 @@ public class TransactionRepositoryTest {
 
         transaction = transactionRepository.save(transaction);
 
-        Assertions.assertThat(transactionRepository.existsTransactionByUserId(1L)).isTrue();
-        Assertions.assertThat(transactionRepository.existsTransactionByUserId(9L)).isFalse();
+        Assertions.assertThat(transactionRepository.existsTransactionByUserId(user.getId())).isTrue();
+        Assertions.assertThat(transactionRepository.existsTransactionByUserId(999L)).isFalse();
 
         transactionRepository.delete(transaction);
-
+        userRepository.delete(user);
 
     }
 
     @Test
     public void findAllByUserIdTest(){
+        User user = userRepository.save(new User("test"));
 
         Transaction transaction2 = new Transaction();
-        transaction2.setUser(new User());
-        transaction2.getUser().setId(1L);
+        transaction2.setUser(user);
         transaction2.setBaseValue(BigDecimal.valueOf(1));
         transaction2.setBaseCurrency(CurrencyEnum.BRL);
         transaction2.setDestinationCurrency(CurrencyEnum.USD);
@@ -52,8 +56,9 @@ public class TransactionRepositoryTest {
 
         transaction2 = transactionRepository.save(transaction2);
 
-        Assertions.assertThat(transactionRepository.findAllByUserId(1L).size()).isEqualTo(1);
+        Assertions.assertThat(transactionRepository.findAllByUserId(user.getId()).size()).isEqualTo(1);
 
         transactionRepository.delete(transaction2);
+        userRepository.delete(user);
     }
 }

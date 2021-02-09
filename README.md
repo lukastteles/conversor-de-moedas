@@ -40,7 +40,7 @@ $ mvn spring-boot:run
 ```
 
 ## 📃 Recursos
-- Para utilizar a convers ão de valores é preciso fazer uma requisição do tipo POST no caminho:
+- Para utilizar a conversão de valores é preciso fazer uma requisição do tipo POST no caminho:
 ```
 /currency-converter
 ```
@@ -84,9 +84,9 @@ Linguagem utilizada no projeto com grande comunidade e suporte.
 
 - **Spring Boot**
 
-Framework que facilita o desenvolvimento e configuração de uma aplicação web como uma API Rest
-contendo classes e anotações para acessar os recursos das requisições HTTP,
-facilita a manipulação dos dados e a conexão com banco de dados e utiliza um servidor de aplicação embarcado.  
+Facilita o desenvolvimento e configuração de uma aplicação web como uma API Rest,
+contendo classes e anotações para acessar os recursos das requisições HTTP.
+Além disso, facilita a manipulação dos dados e a conexão com banco de dados e utiliza um servidor de aplicação embarcado.  
 
 - **JUnit**
 
@@ -113,7 +113,7 @@ definidos no sistema.
 
 - **Repository**
 
-Camada responsável pela conexão com o banco de dados e realizar as consultas para obter os objetos armazenados. 
+Camada responsável pela conexão com o banco de dados e realização das consultas para obter os objetos armazenados. 
 
 ---
 **Feito por Lukas Teles**

@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
@@ -41,9 +42,12 @@ public class UserController {
      */
     @PostMapping
     @Transactional
-    public ResponseEntity<User> save(@NotEmpty @RequestBody String name) {
+    public ResponseEntity<User> save(
+            @NotEmpty(message = "name is mandatory")
+            @NotNull(message = "name is mandatory")
+            @RequestBody String name) {
         logger.info(String.format(
-                "starting save user request with name: %s", name.toString()));
+                "starting save user request with name: %s", name));
         User savedUser = userService.save(name);
 
         logger.info(String.format("return save user request object: %s", savedUser.toString()));
