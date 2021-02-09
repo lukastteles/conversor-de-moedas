@@ -40,6 +40,21 @@ $ mvn spring-boot:run
 ```
 
 ## 📃 Recursos
+- Primeiro é preciso adicionar um usuário ao sistema, utilizando a rota a seguir como POST:
+```
+/users
+```
+fornecendo no corpo da requisição apenas o nome:
+```
+'Jéssica'
+```
+essa requisição retornará os dados do usuário adicionado:
+```
+{
+    "id": 1,
+    "name": "Jéssica"
+}
+```
 - Para utilizar a conversão de valores é preciso fazer uma requisição do tipo POST no caminho:
 ```
 /currency-converter
@@ -68,12 +83,16 @@ obtendo o resultado no formato a seguir:
 ```
 
 
-- É possível também consultar o histórico de transações feitas por um usuário específico
-acessando a mesma rota, acrescentando o ID do usuário:
+- É possível consultar o histórico de transações feitas por um usuário específico
+acessando a mesma rota, num requisição GET, acrescentando o ID do usuário:
 ```
 /currency-converter/{idUser}
 ```
-
+- Também é possível consultar a lista de usuários adicionados no sistema e seus respectivos IDs com uma requisição GET
+na mesma rota:
+```
+/users
+```
 
 ## 🧩 Tecnologias
 Esse projeto foi desenvolvido utilizando as seguintes tecnologias:
