@@ -3,6 +3,7 @@ package com.lukastteles.conversordemoedas.model.factory;
 import com.lukastteles.conversordemoedas.model.TO.TransactionTO;
 import com.lukastteles.conversordemoedas.model.entity.CurrencyEnum;
 import com.lukastteles.conversordemoedas.model.entity.Transaction;
+import com.lukastteles.conversordemoedas.model.entity.User;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,7 +18,8 @@ public class TransactionTOFactoryTest {
     public void create(){
 
         Transaction transaction = new Transaction();
-        transaction.setUserId(1L);
+        transaction.setUser(new User());
+        transaction.getUser().setId(1L);
         transaction.setBaseValue(BigDecimal.valueOf(2));
         transaction.setBaseCurrency(CurrencyEnum.BRL);
         transaction.setDestinationCurrency(CurrencyEnum.USD);

@@ -5,6 +5,7 @@ import com.lukastteles.conversordemoedas.model.TO.Rates;
 import com.lukastteles.conversordemoedas.model.TO.TransactionRequestTO;
 import com.lukastteles.conversordemoedas.model.entity.CurrencyEnum;
 import com.lukastteles.conversordemoedas.model.entity.Transaction;
+import com.lukastteles.conversordemoedas.model.entity.User;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -25,7 +26,8 @@ public class TransactionFactory {
      */
     public static Transaction create(TransactionRequestTO transactionRequestTO, ExchangeRatesTO exchangeRatesTO) {
         Transaction transaction = new Transaction();
-        transaction.setUserId(transactionRequestTO.getUserId());
+        transaction.setUser(new User());
+        transaction.getUser().setId(transactionRequestTO.getUserId());
         transaction.setBaseCurrency(CurrencyEnum.getCurrencyEnumByText(transactionRequestTO.getBaseCurrency()));
         transaction.setBaseValue(transactionRequestTO.getBaseValue());
         transaction.setDestinationCurrency(CurrencyEnum.getCurrencyEnumByText(transactionRequestTO.getDestinationCurrency()));

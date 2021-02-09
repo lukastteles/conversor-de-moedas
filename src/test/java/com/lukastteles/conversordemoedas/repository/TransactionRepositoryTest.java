@@ -2,6 +2,7 @@ package com.lukastteles.conversordemoedas.repository;
 
 import com.lukastteles.conversordemoedas.model.entity.CurrencyEnum;
 import com.lukastteles.conversordemoedas.model.entity.Transaction;
+import com.lukastteles.conversordemoedas.model.entity.User;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,8 @@ public class TransactionRepositoryTest {
     @Test
     public void existsTransactionByUserIdTest(){
         Transaction transaction = new Transaction();
-        transaction.setUserId(1L);
+        transaction.setUser(new User());
+        transaction.getUser().setId(1L);
         transaction.setBaseValue(BigDecimal.valueOf(1));
         transaction.setBaseCurrency(CurrencyEnum.BRL);
         transaction.setDestinationCurrency(CurrencyEnum.USD);
@@ -40,7 +42,8 @@ public class TransactionRepositoryTest {
     public void findAllByUserIdTest(){
 
         Transaction transaction2 = new Transaction();
-        transaction2.setUserId(1L);
+        transaction2.setUser(new User());
+        transaction2.getUser().setId(1L);
         transaction2.setBaseValue(BigDecimal.valueOf(1));
         transaction2.setBaseCurrency(CurrencyEnum.BRL);
         transaction2.setDestinationCurrency(CurrencyEnum.USD);

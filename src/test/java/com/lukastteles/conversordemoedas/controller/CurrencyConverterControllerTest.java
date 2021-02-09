@@ -3,6 +3,7 @@ package com.lukastteles.conversordemoedas.controller;
 import com.lukastteles.conversordemoedas.model.TO.TransactionRequestTO;
 import com.lukastteles.conversordemoedas.model.entity.CurrencyEnum;
 import com.lukastteles.conversordemoedas.model.entity.Transaction;
+import com.lukastteles.conversordemoedas.model.entity.User;
 import com.lukastteles.conversordemoedas.repository.TransactionRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -33,7 +34,8 @@ public class CurrencyConverterControllerTest {
     public Transaction transaction = new Transaction();
 
     public CurrencyConverterControllerTest(){
-        transaction.setUserId(1L);
+        transaction.setUser(new User());
+        transaction.getUser().setId(1L);
         transaction.setBaseValue(BigDecimal.valueOf(1));
         transaction.setBaseCurrency(CurrencyEnum.BRL);
         transaction.setDestinationCurrency(CurrencyEnum.USD);

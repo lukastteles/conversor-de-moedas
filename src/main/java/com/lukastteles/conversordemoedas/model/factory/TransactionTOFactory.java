@@ -20,7 +20,7 @@ public class TransactionTOFactory {
     public static TransactionTO create(Transaction transaction){
         TransactionTO transactionTO = new TransactionTO();
         transactionTO.setId(transaction.getId());
-        transactionTO.setUserId(transaction.getUserId());
+        transactionTO.setUserId(transaction.getUser().getId());
         transactionTO.setBaseCurrency(transaction.getBaseCurrency().getText());
         transactionTO.setBaseValue(transaction.getBaseValue());
         transactionTO.setDestinationCurrency(transaction.getDestinationCurrency().getText());

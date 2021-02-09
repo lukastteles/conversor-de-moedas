@@ -8,11 +8,12 @@ import java.time.LocalDateTime;
 public class Transaction {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private Long userId;
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private User user;
 
     @Column(nullable = false)
     private CurrencyEnum baseCurrency;
@@ -40,12 +41,12 @@ public class Transaction {
         this.id = id;
     }
 
-    public Long getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public CurrencyEnum getBaseCurrency() {
@@ -92,7 +93,7 @@ public class Transaction {
     public String toString() {
         return "Transaction{" +
                 "id=" + id +
-                ", userId=" + userId +
+                ", user=" + user +
                 ", baseCurrency=" + baseCurrency +
                 ", baseValue=" + baseValue +
                 ", destinationCurrency=" + destinationCurrency +

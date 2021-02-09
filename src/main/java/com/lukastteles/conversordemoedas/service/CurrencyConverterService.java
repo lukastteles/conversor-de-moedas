@@ -29,8 +29,8 @@ public class CurrencyConverterService {
 
     /**
      * Default constructor
-     * @param exchangeRatesService exchange rates service object
-     * @param transactionRepository transaction repository object
+     * @param exchangeRatesService {@link com.lukastteles.conversordemoedas.service.ExchangeRatesService} exchange rates service object
+     * @param transactionRepository {@link com.lukastteles.conversordemoedas.repository.TransactionRepository} transaction repository object
      */
     public CurrencyConverterService(ExchangeRatesService exchangeRatesService,
                                     TransactionRepository transactionRepository) {
