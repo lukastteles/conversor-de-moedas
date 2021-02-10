@@ -18,7 +18,9 @@ a API [Exchange rates](https://exchangeratesapi.io/).
 
 O projeto está disponível em: https://conversor-de-moedas-lukas.herokuapp.com/
 
-A documentação JavaDoc está disponível em: https://conversor-de-moedas-javadoc.s3-sa-east-1.amazonaws.com/index.html
+Documentação da API: https://conversor-de-moedas-lukas.herokuapp.com/swagger-ui.html
+
+Documentação JavaDoc: https://conversor-de-moedas-javadoc.s3-sa-east-1.amazonaws.com/index.html
 
 ## 🔨 Como executar a aplicação
 
