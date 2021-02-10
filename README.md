@@ -46,7 +46,9 @@ $ mvn spring-boot:run
 ```
 fornecendo no corpo da requisição apenas o nome:
 ```
-'Jéssica'
+{
+    "name": "Jéssica"
+}
 ```
 essa requisição retornará os dados do usuário adicionado:
 ```

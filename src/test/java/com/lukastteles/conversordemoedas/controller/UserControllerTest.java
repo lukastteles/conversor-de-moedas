@@ -1,5 +1,6 @@
 package com.lukastteles.conversordemoedas.controller;
 
+import com.lukastteles.conversordemoedas.model.TO.UserRequestTO;
 import com.lukastteles.conversordemoedas.model.entity.User;
 import com.lukastteles.conversordemoedas.repository.UserRepository;
 import org.assertj.core.api.Assertions;
@@ -27,17 +28,17 @@ public class UserControllerTest {
     public void postSaveTestShouldReturnStatusCode200(){
         BDDMockito.when(userRepository.save(new User("test"))).thenReturn(new User(1L, "test"));
         //Test with 200 OK
-        ResponseEntity<String> response = testRestTemplate.postForEntity("/users", "test", String.class);
+        ResponseEntity<String> response = testRestTemplate.postForEntity("/users", new UserRequestTO("test"), String.class);
         Assertions.assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
 
     @Test
     public void postSaveTestShouldReturnStatusCode400(){
         //Test with 400 BAD_REQUEST - null name
-        ResponseEntity<String> response = testRestTemplate.postForEntity("/users", null, String.class);
+        ResponseEntity<String> response = testRestTemplate.postForEntity("/users", new UserRequestTO(null), String.class);
         Assertions.assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
         //Test with 400 BAD_REQUEST - empty name
-        ResponseEntity<String> response2 = testRestTemplate.postForEntity("/users", "", String.class);
+        ResponseEntity<String> response2 = testRestTemplate.postForEntity("/users", new UserRequestTO(""), String.class);
         Assertions.assertThat(response2.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
     }
 

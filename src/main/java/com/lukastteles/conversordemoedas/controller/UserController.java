@@ -1,5 +1,6 @@
 package com.lukastteles.conversordemoedas.controller;
 
+import com.lukastteles.conversordemoedas.model.TO.UserRequestTO;
 import com.lukastteles.conversordemoedas.model.entity.User;
 import com.lukastteles.conversordemoedas.service.UserService;
 import org.slf4j.Logger;
@@ -10,8 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -37,18 +37,17 @@ public class UserController {
 
     /**
      * Endpoint to add user
-     * @param name {@link java.lang.String} user name request object
+     * @param userRequestTO {@link java.lang.String} user name request object
      * @return {@link org.springframework.http.ResponseEntity}
      */
     @PostMapping
     @Transactional
     public ResponseEntity<User> save(
-            @NotEmpty(message = "name is mandatory")
-            @NotNull(message = "name is mandatory")
-            @RequestBody String name) {
+            @Valid
+            @RequestBody UserRequestTO userRequestTO) {
         logger.info(String.format(
-                "starting save user request with name: %s", name));
-        User savedUser = userService.save(name);
+                "starting save user request with name: %s", userRequestTO.toString()));
+        User savedUser = userService.save(userRequestTO);
 
         logger.info(String.format("return save user request object: %s", savedUser.toString()));
         return new ResponseEntity<>(savedUser, HttpStatus.OK);

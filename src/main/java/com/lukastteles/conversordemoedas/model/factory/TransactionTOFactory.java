@@ -3,12 +3,12 @@ package com.lukastteles.conversordemoedas.model.factory;
 import com.lukastteles.conversordemoedas.model.TO.TransactionTO;
 import com.lukastteles.conversordemoedas.model.entity.Transaction;
 
+import java.math.BigDecimal;
+
 /**
  * Factory to create a {@link com.lukastteles.conversordemoedas.model.TO.TransactionTO} object
  * @author Lukas Teles
  */
-import java.math.BigDecimal;
-
 public class TransactionTOFactory {
 
     /**

@@ -5,6 +5,7 @@ import com.lukastteles.conversordemoedas.model.entity.CurrencyEnum;
 import com.lukastteles.conversordemoedas.model.entity.Transaction;
 import com.lukastteles.conversordemoedas.model.entity.User;
 import com.lukastteles.conversordemoedas.repository.TransactionRepository;
+import com.lukastteles.conversordemoedas.repository.UserRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.BDDMockito;
@@ -31,9 +32,13 @@ public class CurrencyConverterControllerTest {
     @MockBean
     public TransactionRepository transactionRepository;
 
+    @MockBean
+    public UserRepository userRepository;
+
     public Transaction transaction = new Transaction();
 
     public CurrencyConverterControllerTest(){
+
         transaction.setUser(new User());
         transaction.getUser().setId(1L);
         transaction.setBaseValue(BigDecimal.valueOf(1));
@@ -45,6 +50,10 @@ public class CurrencyConverterControllerTest {
 
     @Test
     public void postConvertTestShouldReturnStatusCode200(){
+        //Mock
+        BDDMockito.when(userRepository.existsById(1L)).thenReturn(true);
+        BDDMockito.when(transactionRepository.existsTransactionByUserId(1L)).thenReturn(true);
+
         //Parameters
         TransactionRequestTO transactionRequestTO = new TransactionRequestTO();
         transactionRequestTO.setDestinationCurrency("BRL");
@@ -74,7 +83,7 @@ public class CurrencyConverterControllerTest {
     @Test
     public void getAllTransactionsByIdUserTestShouldReturnStatusCode200(){
         //Mock
-        BDDMockito.when(transactionRepository.existsTransactionByUserId(1L)).thenReturn(true);
+        BDDMockito.when(userRepository.existsById(1L)).thenReturn(true);
         BDDMockito.when(transactionRepository.findAllByUserId(1L)).thenReturn(asList(transaction));
 
         //Test with 200 OK

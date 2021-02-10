@@ -1,8 +1,9 @@
 package com.lukastteles.conversordemoedas.model.TO;
 
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.math.BigDecimal;
 
 
@@ -11,13 +12,19 @@ public class TransactionRequestTO {
     @NotNull(message = "User ID is mandatory")
     private Long userId;
 
-    @NotEmpty(message = "Base currency is mandatory")
+    @NotBlank(message = "Base currency is mandatory")
+    @Pattern(regexp = "BRL|USD|EUR|JPY",
+             flags = Pattern.Flag.CASE_INSENSITIVE,
+             message = "Base currency can just be 'BRL', 'USD', 'EUR' or 'JPY'")
     private String baseCurrency;
 
     @Min(message = "Base value must be greater than or equal to zero", value = 0)
     private BigDecimal baseValue;
 
-    @NotEmpty(message = "Destination currency is mandatory")
+    @NotBlank(message = "Destination currency is mandatory")
+    @Pattern(regexp = "BRL|USD|EUR|JPY",
+            flags = Pattern.Flag.CASE_INSENSITIVE,
+            message = "Base currency can just be 'BRL', 'USD', 'EUR' or 'JPY'")
     private String destinationCurrency;
 
     public TransactionRequestTO() {

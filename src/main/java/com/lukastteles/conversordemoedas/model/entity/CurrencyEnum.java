@@ -5,7 +5,7 @@ import java.util.Arrays;
 public enum CurrencyEnum {
     BRL("BRL"), USD("USD"), EUR("EUR"), JPY("JPY");
 
-    private String text;
+    private final String text;
 
     CurrencyEnum(String text) {
         this.text = text;

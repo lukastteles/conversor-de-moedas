@@ -1,5 +1,6 @@
 package com.lukastteles.conversordemoedas.service;
 
+import com.lukastteles.conversordemoedas.model.TO.UserRequestTO;
 import com.lukastteles.conversordemoedas.model.entity.User;
 import com.lukastteles.conversordemoedas.repository.UserRepository;
 import org.slf4j.Logger;
@@ -24,7 +25,7 @@ public class UserService {
 
     /**
      * Default constructor
-     * @param userRepository
+     * @param userRepository user repository object
      */
     @Autowired
     public UserService(UserRepository userRepository){
@@ -33,11 +34,11 @@ public class UserService {
 
     /**
      * Save user object
-     * @param name {@link java.lang.String} user name
+     * @param userRequestTO {@link com.lukastteles.conversordemoedas.model.TO.UserRequestTO} user request object
      * @return {@link com.lukastteles.conversordemoedas.model.entity.User}
      */
-    public User save(String name) {
-        User user = new User(name);
+    public User save(UserRequestTO userRequestTO) {
+        User user = new User(userRequestTO.getName());
         logger.info(String.format("User object to save: %s", user));
         return this.userRepository.save(user);
     }
