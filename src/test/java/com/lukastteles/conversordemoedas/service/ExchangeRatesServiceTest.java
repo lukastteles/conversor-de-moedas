@@ -16,6 +16,7 @@ public class ExchangeRatesServiceTest {
     public void getExchangeRatesTOTest(){
         ExchangeRatesTO exchangeRatesTO = exchangeRatesService.getExchangeRatesTO("EUR", "USD");
         Assertions.assertThat(exchangeRatesTO).isNotNull();
+        Assertions.assertThat(exchangeRatesTO.getRates().getUsd()).isPositive();
     }
 
 }
