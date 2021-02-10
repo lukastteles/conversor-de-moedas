@@ -22,7 +22,7 @@ import java.util.List;
 @RequestMapping("currency-converter")
 public class CurrencyConverterController {
 
-    Logger logger = LoggerFactory.getLogger(CurrencyConverterController.class);
+    private final Logger logger = LoggerFactory.getLogger(CurrencyConverterController.class);
 
     private final CurrencyConverterService currencyConverterService;
 

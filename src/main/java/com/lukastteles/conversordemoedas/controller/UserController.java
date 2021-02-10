@@ -22,7 +22,7 @@ import java.util.List;
 @RequestMapping("users")
 public class UserController {
 
-    Logger logger = LoggerFactory.getLogger(UserController.class);
+    private final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     private final UserService userService;
 

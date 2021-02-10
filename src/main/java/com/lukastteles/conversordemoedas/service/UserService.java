@@ -19,7 +19,7 @@ import java.util.stream.StreamSupport;
 @Service
 public class UserService {
 
-    Logger logger = LoggerFactory.getLogger(CurrencyConverterService.class);
+    private final Logger logger = LoggerFactory.getLogger(CurrencyConverterService.class);
 
     private UserRepository userRepository;
 

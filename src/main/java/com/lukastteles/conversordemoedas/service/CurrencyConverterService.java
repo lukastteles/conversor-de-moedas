@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 @Service
 public class CurrencyConverterService {
 
-    Logger logger = LoggerFactory.getLogger(CurrencyConverterService.class);
+    private final Logger logger = LoggerFactory.getLogger(CurrencyConverterService.class);
 
     private final ExchangeRatesService exchangeRatesService;
     private final TransactionRepository transactionRepository;
