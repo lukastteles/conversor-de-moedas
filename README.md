@@ -1,5 +1,6 @@
 # Conversor de Moedas
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b29daafb79be474bb1f348f07bc8b55b)](https://app.codacy.com/gh/lukastteles/conversor-de-moedas?utm_source=github.com&utm_medium=referral&utm_content=lukastteles/conversor-de-moedas&utm_campaign=Badge_Grade)
 [![Build Status](https://travis-ci.com/lukastteles/conversor-de-moedas.svg?branch=main)](https://travis-ci.com/lukastteles/conversor-de-moedas)
 
 <p align="center">
