@@ -1,6 +1,6 @@
 package com.lukastteles.conversordemoedas.model.factory;
 
-import com.lukastteles.conversordemoedas.model.TO.TransactionTO;
+import com.lukastteles.conversordemoedas.model.to.TransactionTO;
 import com.lukastteles.conversordemoedas.model.entity.CurrencyEnum;
 import com.lukastteles.conversordemoedas.model.entity.Transaction;
 import com.lukastteles.conversordemoedas.model.entity.User;

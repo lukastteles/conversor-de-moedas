@@ -1,7 +1,7 @@
 package com.lukastteles.conversordemoedas.controller;
 
-import com.lukastteles.conversordemoedas.model.TO.TransactionRequestTO;
-import com.lukastteles.conversordemoedas.model.TO.TransactionTO;
+import com.lukastteles.conversordemoedas.model.to.TransactionRequestTO;
+import com.lukastteles.conversordemoedas.model.to.TransactionTO;
 import com.lukastteles.conversordemoedas.service.CurrencyConverterService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,7 +37,7 @@ public class CurrencyConverterController {
 
     /**
      * Endpoint for currency convert
-     * @param transactionRequestTO {@link com.lukastteles.conversordemoedas.model.TO.TransactionRequestTO} transaction request object
+     * @param transactionRequestTO {@link com.lukastteles.conversordemoedas.model.to.TransactionRequestTO} transaction request object
      * @return {@link org.springframework.http.ResponseEntity}
      */
     @PostMapping

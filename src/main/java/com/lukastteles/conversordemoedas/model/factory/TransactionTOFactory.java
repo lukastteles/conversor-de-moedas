@@ -1,21 +1,21 @@
 package com.lukastteles.conversordemoedas.model.factory;
 
-import com.lukastteles.conversordemoedas.model.TO.TransactionTO;
+import com.lukastteles.conversordemoedas.model.to.TransactionTO;
 import com.lukastteles.conversordemoedas.model.entity.Transaction;
 
 import java.math.BigDecimal;
 
 /**
- * Factory to create a {@link com.lukastteles.conversordemoedas.model.TO.TransactionTO} object
+ * Factory to create a {@link com.lukastteles.conversordemoedas.model.to.TransactionTO} object
  * @author Lukas Teles
  */
 public class TransactionTOFactory {
 
     /**
-     * Creates a {@link com.lukastteles.conversordemoedas.model.TO.TransactionTO} object
-     * by {@link com.lukastteles.conversordemoedas.model.TO.TransactionTO} object
+     * Creates a {@link com.lukastteles.conversordemoedas.model.to.TransactionTO} object
+     * by {@link com.lukastteles.conversordemoedas.model.to.TransactionTO} object
      * @param transaction {@link com.lukastteles.conversordemoedas.model.entity.Transaction} object
-     * @return {@link com.lukastteles.conversordemoedas.model.TO.TransactionTO}
+     * @return {@link com.lukastteles.conversordemoedas.model.to.TransactionTO}
      */
     public static TransactionTO create(Transaction transaction){
         TransactionTO transactionTO = new TransactionTO();

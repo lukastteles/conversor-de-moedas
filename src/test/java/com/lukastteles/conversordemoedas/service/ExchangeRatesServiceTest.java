@@ -1,6 +1,6 @@
 package com.lukastteles.conversordemoedas.service;
 
-import com.lukastteles.conversordemoedas.model.TO.ExchangeRatesTO;
+import com.lukastteles.conversordemoedas.model.to.ExchangeRatesTO;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

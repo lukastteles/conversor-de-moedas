@@ -1,8 +1,8 @@
 package com.lukastteles.conversordemoedas.model.factory;
 
-import com.lukastteles.conversordemoedas.model.TO.ExchangeRatesTO;
-import com.lukastteles.conversordemoedas.model.TO.Rates;
-import com.lukastteles.conversordemoedas.model.TO.TransactionRequestTO;
+import com.lukastteles.conversordemoedas.model.to.ExchangeRatesTO;
+import com.lukastteles.conversordemoedas.model.to.Rates;
+import com.lukastteles.conversordemoedas.model.to.TransactionRequestTO;
 import com.lukastteles.conversordemoedas.model.entity.Transaction;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;

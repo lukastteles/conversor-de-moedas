@@ -1,9 +1,9 @@
 package com.lukastteles.conversordemoedas.service;
 
 import com.lukastteles.conversordemoedas.error.BadRequestException;
-import com.lukastteles.conversordemoedas.model.TO.ExchangeRatesTO;
-import com.lukastteles.conversordemoedas.model.TO.TransactionRequestTO;
-import com.lukastteles.conversordemoedas.model.TO.TransactionTO;
+import com.lukastteles.conversordemoedas.model.to.ExchangeRatesTO;
+import com.lukastteles.conversordemoedas.model.to.TransactionRequestTO;
+import com.lukastteles.conversordemoedas.model.to.TransactionTO;
 import com.lukastteles.conversordemoedas.model.entity.Transaction;
 import com.lukastteles.conversordemoedas.model.factory.TransactionFactory;
 import com.lukastteles.conversordemoedas.model.factory.TransactionTOFactory;
@@ -43,12 +43,12 @@ public class CurrencyConverterService {
     }
 
     /**
-     * Get {@link com.lukastteles.conversordemoedas.model.TO.TransactionRequestTO} object,
+     * Get {@link com.lukastteles.conversordemoedas.model.to.TransactionRequestTO} object,
      * call Exchange Rates API,
      * save {@link com.lukastteles.conversordemoedas.model.entity.Transaction} data,
      * and build the result data
-     * @param transactionRequestTO {@link com.lukastteles.conversordemoedas.model.TO.TransactionRequestTO} data from request
-     * @return {@link com.lukastteles.conversordemoedas.model.TO.TransactionTO}
+     * @param transactionRequestTO {@link com.lukastteles.conversordemoedas.model.to.TransactionRequestTO} data from request
+     * @return {@link com.lukastteles.conversordemoedas.model.to.TransactionTO}
      * @throws BadRequestException {@link com.lukastteles.conversordemoedas.error.BadRequestException}
      */
     public TransactionTO convert(TransactionRequestTO transactionRequestTO) throws BadRequestException {

@@ -1,4 +1,4 @@
-package com.lukastteles.conversordemoedas.model.TO;
+package com.lukastteles.conversordemoedas.model.to;
 
 import java.math.BigDecimal;
 
@@ -12,9 +12,6 @@ public class TransactionTO {
     private BigDecimal destinationValue;
     private BigDecimal conversionTax;
     private String date;
-
-    public TransactionTO() {
-    }
 
     public Long getId() {
         return id;

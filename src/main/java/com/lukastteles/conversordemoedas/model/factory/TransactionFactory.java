@@ -1,8 +1,8 @@
 package com.lukastteles.conversordemoedas.model.factory;
 
-import com.lukastteles.conversordemoedas.model.TO.ExchangeRatesTO;
-import com.lukastteles.conversordemoedas.model.TO.Rates;
-import com.lukastteles.conversordemoedas.model.TO.TransactionRequestTO;
+import com.lukastteles.conversordemoedas.model.to.ExchangeRatesTO;
+import com.lukastteles.conversordemoedas.model.to.Rates;
+import com.lukastteles.conversordemoedas.model.to.TransactionRequestTO;
 import com.lukastteles.conversordemoedas.model.entity.CurrencyEnum;
 import com.lukastteles.conversordemoedas.model.entity.Transaction;
 import com.lukastteles.conversordemoedas.model.entity.User;
@@ -18,10 +18,10 @@ public class TransactionFactory {
 
     /**
      * Creates a {@link com.lukastteles.conversordemoedas.model.entity.Transaction} object
-     * by {@link com.lukastteles.conversordemoedas.model.TO.TransactionRequestTO}
-     * and {@link com.lukastteles.conversordemoedas.model.TO.ExchangeRatesTO}
-     * @param transactionRequestTO {@link com.lukastteles.conversordemoedas.model.TO.TransactionRequestTO} request object
-     * @param exchangeRatesTO {@link com.lukastteles.conversordemoedas.model.TO.ExchangeRatesTO} exchange rates API result object
+     * by {@link com.lukastteles.conversordemoedas.model.to.TransactionRequestTO}
+     * and {@link com.lukastteles.conversordemoedas.model.to.ExchangeRatesTO}
+     * @param transactionRequestTO {@link com.lukastteles.conversordemoedas.model.to.TransactionRequestTO} request object
+     * @param exchangeRatesTO {@link com.lukastteles.conversordemoedas.model.to.ExchangeRatesTO} exchange rates API result object
      * @return {@link com.lukastteles.conversordemoedas.model.entity.Transaction}
      */
     public static Transaction create(TransactionRequestTO transactionRequestTO, ExchangeRatesTO exchangeRatesTO) {
@@ -39,7 +39,7 @@ public class TransactionFactory {
 
     /**
      * Get conversion tax value by currency
-     * @param rates {@link com.lukastteles.conversordemoedas.model.TO.Rates} rates API result object
+     * @param rates {@link com.lukastteles.conversordemoedas.model.to.Rates} rates API result object
      * @param baseCurrency {@link java.lang.String} base currency text
      * @return {@link java.math.BigDecimal}
      */

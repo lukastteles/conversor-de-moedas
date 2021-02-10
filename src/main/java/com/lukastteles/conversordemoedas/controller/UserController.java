@@ -1,6 +1,6 @@
 package com.lukastteles.conversordemoedas.controller;
 
-import com.lukastteles.conversordemoedas.model.TO.UserRequestTO;
+import com.lukastteles.conversordemoedas.model.to.UserRequestTO;
 import com.lukastteles.conversordemoedas.model.entity.User;
 import com.lukastteles.conversordemoedas.service.UserService;
 import org.slf4j.Logger;

@@ -20,7 +20,7 @@ O projeto está disponível em: https://conversor-de-moedas-lukas.herokuapp.com/
 
 ## 🔨 Como executar a aplicação
 
-#### Requisitos
+### Requisitos
     - Maven
     - Java 1.8
 
@@ -41,10 +41,10 @@ $ mvn spring-boot:run
 ```
 
 ## 📃 Recursos
--  Primeiro é preciso adicionar um usuário ao sistema, utilizando a rota a seguir como POST:
-```
-/users
-```
+-   Primeiro é preciso adicionar um usuário ao sistema, utilizando a rota a seguir como POST:
+    ```
+    /users
+    ```
 
 fornecendo no corpo da requisição apenas o nome:
 ```
@@ -59,7 +59,7 @@ essa requisição retornará os dados do usuário adicionado:
     "name": "Jéssica"
 }
 ```
--  Para utilizar a conversão de valores é preciso fazer uma requisição do tipo POST no caminho:
+-   Para utilizar a conversão de valores é preciso fazer uma requisição do tipo POST no caminho:
 ```
 /currency-converter
 ```
@@ -88,12 +88,12 @@ obtendo o resultado no formato a seguir:
 ```
 
 
--  É possível consultar o histórico de transações feitas por um usuário específico
+-   É possível consultar o histórico de transações feitas por um usuário específico
 acessando a mesma rota, num requisição GET, acrescentando o ID do usuário:
 ```
 /currency-converter/{idUser}
 ```
--  Também é possível consultar a lista de usuários adicionados no sistema e seus respectivos IDs com uma requisição GET
+-   Também é possível consultar a lista de usuários adicionados no sistema e seus respectivos IDs com uma requisição GET
 na mesma rota:
 ```
 /users
@@ -102,21 +102,21 @@ na mesma rota:
 ## 🧩 Tecnologias
 Esse projeto foi desenvolvido utilizando as seguintes tecnologias:
 
--  **Java 1.8**
+-   **Java 1.8**
 
 Linguagem utilizada no projeto com grande comunidade e suporte.
 
--  **Spring Boot**
+-   **Spring Boot**
 
 Facilita o desenvolvimento e configuração de uma aplicação web como uma API Rest,
 contendo classes e anotações para acessar os recursos das requisições HTTP.
 Além disso, facilita a manipulação dos dados e a conexão com banco de dados e utiliza um servidor de aplicação embarcado.  
 
--  **JUnit**
+-   **JUnit**
 
 Utilizado para configuração e definição dos testes unitários e testes de integração.
 
--  **Swagger2**
+-   **Swagger2**
 
 Biblioteca para configuração e criação da documentação da API que está disponível
 [aqui](https://conversor-de-moedas-lukas.herokuapp.com/swagger-ui.html)
@@ -125,17 +125,17 @@ Biblioteca para configuração e criação da documentação da API que está di
 ##📚 Camadas
 A API está dividida nas seguintes camadas:
 
--  **Controller**
+-   **Controller**
 
 Lida com as requisições dos usuários, fica responsável pelos endpoints e por retornar a resposta aos usuários
 com a ajuda das outras camadas.
 
--  **Service**
+-   **Service**
   
 Responsável pela lógica da aplicação, utiliza os dados recebidos para construir a resposta com os modelos de dados
 definidos no sistema.
 
--  **Repository**
+-   **Repository**
 
 Camada responsável pela conexão com o banco de dados e realização das consultas para obter os objetos armazenados. 
 

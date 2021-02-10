@@ -1,7 +1,7 @@
 package com.lukastteles.conversordemoedas.service;
 
 import com.lukastteles.conversordemoedas.error.BadRequestException;
-import com.lukastteles.conversordemoedas.model.TO.ExchangeRatesTO;
+import com.lukastteles.conversordemoedas.model.to.ExchangeRatesTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -21,7 +21,7 @@ public class ExchangeRatesService {
      * Get exchange rates by <a href="https://api.exchangeratesapi.io/">api.exchangeratesapi.io</a>
      * @param baseCurrency {@link java.lang.String} for base currency text
      * @param destinationCurrency {@link java.lang.String} for base destination text
-     * @return {@link com.lukastteles.conversordemoedas.model.TO.ExchangeRatesTO}
+     * @return {@link com.lukastteles.conversordemoedas.model.to.ExchangeRatesTO}
      * @throws BadRequestException {@link BadRequestException}
      */
     public ExchangeRatesTO getExchangeRatesTO(String baseCurrency, String destinationCurrency) throws BadRequestException {

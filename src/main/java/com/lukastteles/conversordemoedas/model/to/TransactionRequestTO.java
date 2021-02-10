@@ -1,4 +1,4 @@
-package com.lukastteles.conversordemoedas.model.TO;
+package com.lukastteles.conversordemoedas.model.to;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -26,9 +26,6 @@ public class TransactionRequestTO {
             flags = Pattern.Flag.CASE_INSENSITIVE,
             message = "Base currency can just be 'BRL', 'USD', 'EUR' or 'JPY'")
     private String destinationCurrency;
-
-    public TransactionRequestTO() {
-    }
 
     public Long getUserId() {
         return userId;

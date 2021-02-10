@@ -1,4 +1,4 @@
-package com.lukastteles.conversordemoedas.model.TO;
+package com.lukastteles.conversordemoedas.model.to;
 
 import javax.validation.constraints.NotBlank;
 

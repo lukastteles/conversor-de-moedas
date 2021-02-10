@@ -1,4 +1,4 @@
-package com.lukastteles.conversordemoedas.model.TO;
+package com.lukastteles.conversordemoedas.model.to;
 
 import java.io.Serializable;
 
@@ -7,9 +7,6 @@ public class ExchangeRatesTO implements Serializable {
     private Rates rates;
     private String base;
     private String date;
-
-    public ExchangeRatesTO() {
-    }
 
     public Rates getRates() {
         return rates;

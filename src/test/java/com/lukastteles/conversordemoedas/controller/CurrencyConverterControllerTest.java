@@ -1,6 +1,7 @@
 package com.lukastteles.conversordemoedas.controller;
 
-import com.lukastteles.conversordemoedas.model.TO.TransactionRequestTO;
+import com.lukastteles.conversordemoedas.error.BadRequestDetails;
+import com.lukastteles.conversordemoedas.model.to.TransactionRequestTO;
 import com.lukastteles.conversordemoedas.model.entity.CurrencyEnum;
 import com.lukastteles.conversordemoedas.model.entity.Transaction;
 import com.lukastteles.conversordemoedas.model.entity.User;
@@ -76,8 +77,13 @@ public class CurrencyConverterControllerTest {
         transactionRequestTO.setUserId(1L);
 
         //Test with 400 BAD REQUEST
-        ResponseEntity<String> response = testRestTemplate.postForEntity("/currency-converter", transactionRequestTO, String.class);
+        ResponseEntity<BadRequestDetails> response = testRestTemplate
+                .postForEntity("/currency-converter", transactionRequestTO, BadRequestDetails.class);
         Assertions.assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+        Assertions.assertThat(response.getBody().getDetail())
+                .isEqualTo("Base currency can just be 'BRL', 'USD', 'EUR' or 'JPY';" +
+                        " Base currency can just be 'BRL', 'USD', 'EUR' or 'JPY'; ");
+
     }
 
     @Test
@@ -98,7 +104,8 @@ public class CurrencyConverterControllerTest {
         BDDMockito.when(transactionRepository.existsTransactionByUserId(2L)).thenReturn(false);
 
         //Test with 400 Bad Request
-        ResponseEntity<String> response = testRestTemplate.getForEntity("/currency-converter/1", String.class);
+        ResponseEntity<BadRequestDetails> response = testRestTemplate.getForEntity("/currency-converter/1", BadRequestDetails.class);
         Assertions.assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+        Assertions.assertThat(response.getBody().getDetail()).isEqualTo("User ID not found for ID: 1");
     }
 }

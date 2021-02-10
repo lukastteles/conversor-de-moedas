@@ -1,6 +1,6 @@
 package com.lukastteles.conversordemoedas.service;
 
-import com.lukastteles.conversordemoedas.model.TO.UserRequestTO;
+import com.lukastteles.conversordemoedas.model.to.UserRequestTO;
 import com.lukastteles.conversordemoedas.model.entity.User;
 import com.lukastteles.conversordemoedas.repository.UserRepository;
 import org.assertj.core.api.Assertions;

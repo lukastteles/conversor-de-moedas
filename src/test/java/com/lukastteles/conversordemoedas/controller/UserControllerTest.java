@@ -1,6 +1,7 @@
 package com.lukastteles.conversordemoedas.controller;
 
-import com.lukastteles.conversordemoedas.model.TO.UserRequestTO;
+import com.lukastteles.conversordemoedas.error.BadRequestDetails;
+import com.lukastteles.conversordemoedas.model.to.UserRequestTO;
 import com.lukastteles.conversordemoedas.model.entity.User;
 import com.lukastteles.conversordemoedas.repository.UserRepository;
 import org.assertj.core.api.Assertions;
@@ -35,11 +36,14 @@ public class UserControllerTest {
     @Test
     public void postSaveTestShouldReturnStatusCode400(){
         //Test with 400 BAD_REQUEST - null name
-        ResponseEntity<String> response = testRestTemplate.postForEntity("/users", new UserRequestTO(null), String.class);
+        ResponseEntity<BadRequestDetails> response = testRestTemplate.postForEntity("/users", new UserRequestTO(null), BadRequestDetails.class);
         Assertions.assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+        Assertions.assertThat(response.getBody().getDetail()).isEqualTo("name is mandatory; ");
+
         //Test with 400 BAD_REQUEST - empty name
-        ResponseEntity<String> response2 = testRestTemplate.postForEntity("/users", new UserRequestTO(""), String.class);
+        ResponseEntity<BadRequestDetails> response2 = testRestTemplate.postForEntity("/users", new UserRequestTO(""), BadRequestDetails.class);
         Assertions.assertThat(response2.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+        Assertions.assertThat(response.getBody().getDetail()).isEqualTo("name is mandatory; ");
     }
 
     @Test

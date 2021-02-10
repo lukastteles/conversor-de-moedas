@@ -1,4 +1,4 @@
-package com.lukastteles.conversordemoedas.model.TO;
+package com.lukastteles.conversordemoedas.model.to;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -20,9 +20,6 @@ public class Rates implements Serializable {
 
     @JsonProperty("JPY")
     private BigDecimal jpy;
-
-    public Rates() {
-    }
 
     public BigDecimal getBrl() { return brl; }
 
